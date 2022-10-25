@@ -92,7 +92,7 @@ const Navbar = () => {
 
             <div className="mt-3 space-y-2 lg:hidden inline-block">
               {/* For small screen  */}
-              {user?.email ? (
+              {user?.uid ? (
                 <div className="flex gap-2 items-center">
                 {user?.photoURL ? (
                   <Tooltip title={user?.displayName} placement="top" arrow>
@@ -143,7 +143,7 @@ const Navbar = () => {
         </div>
 
         {/* For large screen  */}
-        {user?.email ? (
+        {user?.uid ? (
           <div className="hidden lg:inline-block">
             <div className="flex gap-2 items-center">
               {user?.photoURL ? (

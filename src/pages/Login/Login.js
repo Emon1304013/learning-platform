@@ -5,7 +5,7 @@ import { AuthContext } from "../../contexts/UserContext";
 import { FaEye } from "react-icons/fa";
 
 const Login = () => {
-  const { userLogin, googleSignIn, resetPass, setLoading } =
+  const { userLogin, googleSignIn, resetPass, setLoading, githubSignIn } =
     useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,6 +24,19 @@ const Login = () => {
       toast.success("User Logged in successfully");
     });
   };
+
+  const handleGithubSignIn = () =>{
+      githubSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+        toast.success("User logged in successfully")
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      })
+  }
 
   const handleEmail = (e) => {
     const test = /\S+@\S+\.\S+/.test(e.target.value);
@@ -177,7 +190,9 @@ const Login = () => {
           </button>
 
           {/* Github Login  */}
-          <button aria-label="Log in with GitHub" className="p-3 rounded-sm">
+          <button 
+          onClick={handleGithubSignIn}
+          aria-label="Log in with GitHub" className="p-3 rounded-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"

@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import { FaEye } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/UserContext";
 
 const SignUp = () => {
-  const { createUser, verifyEmail, updateUserProfile, googleSignIn } =
+  const { createUser, verifyEmail, updateUserProfile, googleSignIn , githubSignIn} =
     useContext(AuthContext);
 
   const [name, setName] = useState("");
@@ -18,6 +18,9 @@ const SignUp = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   // Name Validation
   const handleName = (e) => {
@@ -112,9 +115,21 @@ const SignUp = () => {
   const handleGoogleSignin = () => {
     googleSignIn().then((result) => {
       console.log(result.user);
-      // navigate(from, { replace: true })
+      navigate(from, { replace: true })
     });
   };
+
+  const handleGithubSignIn = () =>{
+    githubSignIn()
+    .then((result) => {
+      const user = result.user;
+      console.log(user);
+      toast.success("User logged in successfully")
+    })
+    .catch((error) => {
+      toast.error(error.message);
+    })
+}
 
   return (
     <div className="flex justify-center items-center pt-8">
@@ -261,7 +276,9 @@ const SignUp = () => {
           </button>
 
           {/* Github Login  */}
-          <button aria-label="Log in with GitHub" className="p-3 rounded-sm">
+          <button 
+          onClick={handleGithubSignIn}
+          aria-label="Log in with GitHub" className="p-3 rounded-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
