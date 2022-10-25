@@ -51,7 +51,7 @@ const CourseDetails = () => {
       )}
 
       <div className="text-center mb-4">
-        <Link>
+        <Link to={`/checkout/${id}`}>
           <button className="bg-purple-500 px-8 py-4 rounded-full text-white text-2xl hover:bg-[#93E2A9] cursor-pointer font-bold">
             Get Premium Access
           </button>

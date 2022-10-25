@@ -55,7 +55,7 @@ const UserContext = ({children}) => {
       useEffect(() => {
         //this part will execute once the component is mounted.
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
-          if(currentUser === null ||currentUser.emailVerified){
+          if(currentUser === null || currentUser.emailVerified){
             setUser(currentUser)
           }
           setLoading(false)

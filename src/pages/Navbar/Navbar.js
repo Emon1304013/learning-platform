@@ -96,14 +96,14 @@ const Navbar = () => {
                 {user?.photoURL ? (
                   <img
                     className="rounded-full"
-                    style={{ height: "30px" }}
+                    style={{ height: "30px", width:"30px" }}
                     src={user?.photoURL}
                     alt=""
                   />
                 ) : (
                   <img
                     className="rounded-full"
-                    style={{ height: "30px" }}
+                    style={{ height: "30px", width:"30px" }}
                     src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png"
                     alt=""
                   />
@@ -158,7 +158,7 @@ const Navbar = () => {
                   alt=""
                 />
               )}
-              <p className="text-white text-xl">{user?.displayName}</p>
+              {/* <p className="text-white text-xl">{user?.displayName}</p> */}
               <Link
                 className=" px-4 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
                 onClick={handleLogOut}

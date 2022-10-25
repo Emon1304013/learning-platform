@@ -1,4 +1,5 @@
 import Blog from "../pages/Blog/Blog";
+import Checkout from "../pages/Checkout/Checkout";
 import CourseDetails from "../pages/CourseDetails/CourseDetails";
 import Courses from "../pages/Courses/Courses";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
@@ -7,6 +8,7 @@ import Login from "../pages/Login/Login";
 import Main from "../pages/Main/Main";
 import Faq from "../pages/Others/Faq";
 import Register from "../pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -23,16 +25,16 @@ const router = createBrowserRouter([
             {
                path:'/courses',
                element:<Courses></Courses>,
-               loader: ()=> fetch('http://localhost:5000/courses') 
+               loader: ()=> fetch('https://kamals-care-server.vercel.app/courses') 
             },
             {
                 path:'/courses/:id',
                 element:<CourseDetails></CourseDetails>,
-                loader:({params}) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader:({params}) => fetch(`https://kamals-care-server.vercel.app/courses/${params.id}`)
             },
             {
                 path:'/blog',
-                element:<Blog></Blog>
+                element:<PrivateRoute><Blog></Blog></PrivateRoute>
             },
             {
                 path:'/faq',
@@ -45,6 +47,11 @@ const router = createBrowserRouter([
             {
                 path:'/register',
                 element:<Register></Register>
+            },
+            {
+                path:'/checkout/:id',
+                element:<PrivateRoute><Checkout></Checkout></PrivateRoute>,
+                loader:({params}) => fetch(`https://kamals-care-server.vercel.app/checkout/${params.id}`)
             }
         ]
     }
