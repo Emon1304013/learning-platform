@@ -1,4 +1,5 @@
 import Blog from "../pages/Blog/Blog";
+import CourseDetails from "../pages/CourseDetails/CourseDetails";
 import Courses from "../pages/Courses/Courses";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home";
@@ -24,10 +25,11 @@ const router = createBrowserRouter([
                element:<Courses></Courses>,
                loader: ()=> fetch('http://localhost:5000/courses') 
             },
-            // {
-            //     path:'/courses/:id',
-            //     element:
-            // },
+            {
+                path:'/courses/:id',
+                element:<CourseDetails></CourseDetails>,
+                loader:({params}) => fetch(`http://localhost:5000/courses/{params.id}`)
+            },
             {
                 path:'/blog',
                 element:<Blog></Blog>
