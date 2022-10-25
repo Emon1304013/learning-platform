@@ -45,13 +45,13 @@ const Login = () => {
           navigate(from, { replace: true });
           toast.success("User Logged in successfully");
         } else {
-          // console.log("Email verify pending");
           toast.error("Your email is not verified. Please verify First");
           e.target.reset();
         }
       })
       .catch((error) => {
         console.error(error);
+        toast.error(error.message)
       })
       .finally(() => {
         setLoading(false);
@@ -64,16 +64,20 @@ const Login = () => {
   };
 
   const handleReset = () => {
-    resetPass(email)
+    if(!email){
+      alert('Please enter a valid email.')
+    }
+    else{
+      resetPass(email)
       .then(() => {
         toast.success("Password reset link sent");
-        console.log("Password Reset link sent");
       })
       .catch((error) => {
         // const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage);
       });
+    }
   };
   return (
     <div className="flex justify-center items-center pt-8">

@@ -23,9 +23,15 @@ const UserContext = ({children}) => {
       }
 
     //   Name Update after User created 
-    const updateName = (name) =>{
-        setLoading(true);
-        return updateProfile(auth.currentUser, {displayName: name})
+    // const updateName = (name) =>{
+    //     setLoading(true);
+    //     return updateProfile(auth.currentUser, {displayName: name})
+    // }
+
+    const updateUserProfile = (name,photoURL) => {
+      return updateProfile (auth.currentUser, {
+        displayName : name, photoURL: photoURL
+      })
     }
 
     // Registration / sign in with google  
@@ -74,7 +80,7 @@ const UserContext = ({children}) => {
         setLoading,
         createUser,
         verifyEmail,
-        updateName,
+        updateUserProfile,
         googleSignIn,
         userLogin,
         userSignOut,

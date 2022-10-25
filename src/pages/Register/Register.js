@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/UserContext";
 
 const SignUp = () => {
-  const { createUser, verifyEmail, updateName, googleSignIn } =
+  const { createUser, verifyEmail, updateUserProfile, googleSignIn } =
     useContext(AuthContext);
 
   const [name, setName] = useState("");
@@ -22,7 +22,6 @@ const SignUp = () => {
   // Name Validation
   const handleName = (e) => {
     setName(e.target.value);
-    toast.success("Hello")
   };
 
   // Email Validation
@@ -72,7 +71,6 @@ const SignUp = () => {
   // Handle Registration
 
   const handleSubmit = (event) => {
-    toast.success("Button submitted")
     event.preventDefault();
 
     // User Creation
@@ -80,14 +78,12 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        // toast.success("User Created successfully");
         event.target.reset();
-        updateName(name).then(() => {
-          // toast.success("Name Updated");
+        updateUserProfile(name, photoUrl)
+        .then(() => {
           verifyEmail()
             .then(() => {
-                console.log("please check your email for verification link");
-              toast.success("please check your email for verification link");
+              return toast.success("please check your email for verification link");
             })
             .catch((error) => {
               toast.error(error.message);
@@ -117,7 +113,6 @@ const SignUp = () => {
     googleSignIn().then((result) => {
       console.log(result.user);
       // navigate(from, { replace: true })
-      
     });
   };
 
