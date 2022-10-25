@@ -79,13 +79,13 @@ const Navbar = () => {
                 <Link to="/">HOME</Link>
               </li>
               <li className="text-white hover:text-indigo-200">
-                <Link to="/blog">COURSES</Link>
+                <Link to="/courses">COURSES</Link>
               </li>
               <li className="text-white hover:text-indigo-200">
-                <Link to="/about">BLOG</Link>
+                <Link to="/blog">BLOG</Link>
               </li>
               <li className="text-white hover:text-indigo-200">
-                <Link to="/contact">FAQ</Link>
+                <Link to="/faq">FAQ</Link>
               </li>
             </ul>
 
