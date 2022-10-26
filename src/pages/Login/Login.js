@@ -3,9 +3,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/UserContext";
 import { FaEye } from "react-icons/fa";
+// import { onAuthStateChanged } from "firebase/auth";
 
 const Login = () => {
-  const { userLogin, googleSignIn, resetPass, setLoading, githubSignIn } =
+  const { userLogin, googleSignIn, resetPass, setLoading, githubSignIn} =
     useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,8 +29,9 @@ const Login = () => {
   const handleGithubSignIn = () =>{
       githubSignIn()
       .then((result) => {
+        // onAuthStateChanged(auth, (currentUser) => {
+        //     setUser(currentUser)})
         const user = result.user;
-        console.log(user);
         navigate(from, { replace: true });
         toast.success("User logged in successfully")
       })

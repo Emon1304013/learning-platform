@@ -6,13 +6,16 @@ import reportWebVitals from "./reportWebVitals";
 import UserContext from "./contexts/UserContext";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import ThemeContext from "./contexts/ThemeContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <UserContext>
-      <App />
+      <ThemeContext>
+        <App />
       <ToastContainer position="top-center" />
+      </ThemeContext>
     </UserContext>
   </React.StrictMode>
 );

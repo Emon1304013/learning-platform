@@ -3,13 +3,13 @@ import React from "react";
 const Blog = () => {
   return (
     <div>
-      <div class="mx-auto my-10 flex flex-col w-full lg:w-2/3 rounded-lg bg-white font-serif text-black shadow-xl">
-        <div class="mt-4">
-          <h1 class="ml-8 md:mx-11 my-1 font-bold text-xl lg:text-[20px] text-gray-600">
+      <div className="mx-auto my-10 flex flex-col w-full lg:w-2/3 rounded-lg bg-white font-serif text-black shadow-xl">
+        <div className="mt-4">
+          <h1 className="ml-8 md:mx-11 my-1 font-bold text-xl lg:text-[20px] text-gray-600">
             What is Cors?
           </h1>
         </div>
-        <div class="mx-11 mb-4 text-md text-gray-500">
+        <div className="mx-11 mb-4 text-md text-gray-500">
           <p>
             Cross-Origin Resource Sharing (CORS) is an HTTP-header based
             mechanism that allows a server to indicate any origins (domain,
@@ -26,14 +26,14 @@ const Blog = () => {
         </div>
       </div>
 
-      <div class="mx-auto my-10 flex flex-col w-full lg:w-2/3 rounded-lg bg-white font-serif text-black shadow-xl">
-        <div class="mt-4">
-          <h1 class="ml-8 md:mx-11 my-1 font-bold text-xl lg:text-[20px] text-gray-600">
+      <div className="mx-auto my-10 flex flex-col w-full lg:w-2/3 rounded-lg bg-white font-serif text-black shadow-xl">
+        <div className="mt-4">
+          <h1 className="ml-8 md:mx-11 my-1 font-bold text-xl lg:text-[20px] text-gray-600">
             Why are you using firebase? What other options do you have to
             implement authentication?
           </h1>
         </div>
-        <div class="mx-11 mb-4 text-md text-gray-500">
+        <div className="mx-11 mb-4 text-md text-gray-500">
           <p>
             Google Firebase is an application development platform that allows
             developers to create iOS, Android, and Web apps. It reduces
@@ -75,13 +75,13 @@ const Blog = () => {
       </div>
 
 
-      <div class="mx-auto my-10 flex flex-col w-full lg:w-2/3 rounded-lg bg-white font-serif text-black shadow-xl">
-        <div class="mt-4">
-          <h1 class="ml-8 md:mx-11 my-1 font-bold text-xl lg:text-[20px] text-gray-600">
+      <div className="mx-auto my-10 flex flex-col w-full lg:w-2/3 rounded-lg bg-white font-serif text-black shadow-xl">
+        <div className="mt-4">
+          <h1 className="ml-8 md:mx-11 my-1 font-bold text-xl lg:text-[20px] text-gray-600">
             How does the private route work?
           </h1>
         </div>
-        <div class="mx-11 mb-4 text-md text-gray-500">
+        <div className="mx-11 mb-4 text-md text-gray-500">
           <p>
           PrivateRoute component is the blueprint for all private routes in the application. The private route component is used to protect selected pages in a React app from unauthenticated users. <br />
           The react private route component renders child components (children) if the user is logged in. If not logged in the user is redirected to the /login page with the return url passed in the location state property
@@ -89,13 +89,13 @@ const Blog = () => {
         </div>
       </div>
 
-      <div class="mx-auto my-10 flex flex-col w-full lg:w-2/3 rounded-lg bg-white font-serif text-black shadow-xl">
-        <div class="mt-4">
-          <h1 class="ml-8 md:mx-11 my-1 font-bold text-xl lg:text-[20px] text-gray-600">
+      <div className="mx-auto my-10 flex flex-col w-full lg:w-2/3 rounded-lg bg-white font-serif text-black shadow-xl">
+        <div className="mt-4">
+          <h1 className="ml-8 md:mx-11 my-1 font-bold text-xl lg:text-[20px] text-gray-600">
           What is Node? How does Node work?
           </h1>
         </div>
-        <div class="mx-11 mb-4 text-md text-gray-500">
+        <div className="mx-11 mb-4 text-md text-gray-500">
           <p>
           Node.js, a JavaScript runtime for building server-side or desktop applications. Node allows developers to write JavaScript code that runs directly in a computer process itself instead of in a browser. Node can, therefore, be used to write server-side applications with access to the operating system, file system, and everything else required to build fully-functional applications. <br />
 

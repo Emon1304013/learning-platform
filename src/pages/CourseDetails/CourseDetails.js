@@ -1,19 +1,40 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
+
+import html2canvas from "html2canvas";
+import { jsPDF } from "jspdf";
 import ProjectCard from "../ProjectCard/ProjectCard";
+import LessonDetails from "../LessonDetails/LessonDetails";
 
 const CourseDetails = () => {
   const courseDetails = useLoaderData();
   console.log(courseDetails);
-  const { id, name, description, img, projects, skills } = courseDetails;
+  const { id, name, description, img, projects, skills, lesson_details } =
+    courseDetails;
+    console.log(lesson_details);
+
+  const createPdf = async () => {
+    const pdf = new jsPDF("portrait", "pt", "a4");
+    const data = await html2canvas(document.querySelector("#pdf"));
+    const img = data.toDataURL("image/png");
+    const imgProperties = pdf.getImageProperties(img);
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
+    pdf.addImage(img, "PNG", 0, 0, pdfWidth, pdfHeight);
+    pdf.save(`${name} lesson_plan.pdf`);
+  };
   return (
     <div className="mt-10 px-6 lg:px-20">
       <div className="flex items-center justify-center gap-4">
         <h1 className="text-center text-xl lg:text-4xl font-bold font-serif">
           {name}
         </h1>
-        <button className="bg-white border px-2 lg:px-4 py-2 text-purple-500 rounded-3xl lg:text-xl hover:bg-purple-500 hover:text-white hover:border-none cursor-pointer font-bold border-gray-600">
-          Course Catalogue
+
+        <button
+          onClick={createPdf}
+          className="bg-white border px-2 lg:px-4 py-2 text-purple-500 rounded-3xl lg:text-xl hover:bg-purple-500 hover:text-white hover:border-none cursor-pointer font-bold border-gray-600"
+        >
+          Download Lesson
         </button>
       </div>
       <h3 className="my-4 font-semibold text-lg lg:text-2xl font-mono">
@@ -32,6 +53,15 @@ const CourseDetails = () => {
           </li>
         ))}
       </ul>
+
+      {/* {lesson_details &&  */}
+      
+      <div id="pdf" className="my-10">
+        <h2 className="text-center font-serif text-3xl font-bold">Lesson Plan</h2>
+          {lesson_details.map((lesson,i) => (
+            <LessonDetails key={i} lesson={lesson}></LessonDetails>
+          ))}
+      </div>
 
       {projects && (
         <div>

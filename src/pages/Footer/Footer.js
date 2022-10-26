@@ -5,8 +5,8 @@ import logo from "../../assets/images/logo.png";
 const Footer = () => {
   return (
     <div>
-      <footer className="p-4 shadow md:px-6 md:py-8 bg-purple-600">
-        <div className="sm:flex sm:items-center sm:justify-between w-2/3 mx-auto">
+      <footer className="p-4 shadow md:px-6 md:py-8 bg-purple-600 rounded-t-lg">
+        <div className="sm:flex sm:items-center sm:justify-between sm:w-2/3 mx-auto">
           <Link to="/" className="flex items-center mb-4 sm:mb-0">
             <img
               src={logo}
@@ -19,26 +19,22 @@ const Footer = () => {
             </span>
           </Link>
           <ul className="flex flex-wrap items-center mb-6 text-sm text-white-500 sm:mb-0 dark:text-white">
-            <li>
-              <Link to="/" className="mr-4 hover:underline md:mr-6 ">
-                HOME
+            
+              <Link to="/" className="mr-4 md:mr-6 ">
+                <button className="cursor-pointer">HOME</button>
               </Link>
-            </li>
-            <li>
-              <Link to="/courses" className="mr-4 hover:underline md:mr-6">
-                COURSES
+              <Link to="/courses" className="mr-4 md:mr-6 ">
+                <button className="cursor-pointer">COURSES</button>
               </Link>
-            </li>
-            <li>
-              <Link href="#" className="mr-4 hover:underline md:mr-6 ">
-                BLOG
+
+              <Link to='/blog' className="mr-4 md:mr-6">
+                <button className=" cursor-pointer">BLOG</button>
               </Link>
-            </li>
-            <li>
-              <Link href="#" className="hover:underline">
-                FAQ
+
+              <Link to='/faq' >
+                <button className="cursor-pointer">FAQ</button>
               </Link>
-            </li>
+
           </ul>
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-white lg:my-8" />

@@ -3,6 +3,7 @@ import { FaEye } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/UserContext";
+// import { onAuthStateChanged } from "firebase/auth";
 
 const SignUp = () => {
   const { createUser, verifyEmail, updateUserProfile, googleSignIn , githubSignIn} =
@@ -122,6 +123,8 @@ const SignUp = () => {
   const handleGithubSignIn = () =>{
     githubSignIn()
     .then((result) => {
+      // onAuthStateChanged(auth, (currentUser) => {
+      //   setUser(currentUser)})
       const user = result.user;
       console.log(user);
       toast.success("User logged in successfully")

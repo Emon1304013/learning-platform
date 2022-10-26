@@ -5,10 +5,12 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/UserContext";
 import logo from '../../assets/images/logo.png'
 import { Tooltip } from "@mui/material";
+import {ThemeProvider} from '../../contexts/ThemeContext'
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
   const { user, userSignOut } = useContext(AuthContext);
+  const { theme, toggleTheme } = useContext(ThemeProvider)
 
   const handleLogOut = () => {
     // console.log("User logged Out");
@@ -194,6 +196,7 @@ const Navbar = () => {
             </div>
           </>
         )}
+        <button onClick={() => toggleTheme()}>{theme}</button>
       </div>
     </nav>
   );
