@@ -18,7 +18,7 @@ const CourseCard = ({ course }) => {
             <h5 className="mb-2 text-2xl font-bold tracking-tight">
               {name}
             </h5>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 min-h-[80px]">
+          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 min-h-[100px]">
             {description.length > 100 ? description.slice(0,100) + '...' : description }
           </p>
           <Link 

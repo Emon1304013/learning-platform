@@ -5,7 +5,7 @@ import logo from "../../assets/images/logo.png";
 const Footer = () => {
   return (
     <div>
-      <footer className="p-4 shadow md:px-6 md:py-8 bg-purple-600 rounded-t-lg">
+      <footer className="p-4 mt-8 shadow md:px-6 md:py-8 bg-purple-600 rounded-t-lg">
         <div className="sm:flex sm:items-center sm:justify-between sm:w-2/3 mx-auto">
           <Link to="/" className="flex items-center mb-4 sm:mb-0">
             <img
