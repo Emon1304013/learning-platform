@@ -150,12 +150,14 @@ const Navbar = () => {
                 <div className="flex gap-2 items-center">
                   {user?.photoURL ? (
                     <Tooltip title={user?.displayName} placement="top" arrow>
-                      <img
-                        className="rounded-full"
-                        style={{ height: "30px", width: "30px" }}
-                        src={user?.photoURL}
-                        alt=""
-                      />
+                      <Link to="profile">
+                        <img
+                          className="rounded-full"
+                          style={{ height: "30px", width: "30px" }}
+                          src={user?.photoURL}
+                          alt=""
+                        />
+                      </Link>
                     </Tooltip>
                   ) : (
                     <img
@@ -207,7 +209,7 @@ const Navbar = () => {
                   placement="top"
                   arrow
                 >
-                  <Link to='profile'>
+                  <Link to="profile">
                     <img
                       className="rounded-full"
                       style={{ height: "30px", width: "30px" }}
