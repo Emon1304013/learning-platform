@@ -8,6 +8,7 @@ import Login from "../pages/Login/Login";
 import Main from "../pages/Main/Main";
 import Faq from "../pages/Others/Faq";
 import Register from "../pages/Register/Register";
+import UserProfile from "../pages/UserProfile/UserProfile";
 import PrivateRoute from "./PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
         children:[
             {
                 path:'/',
+                element:<Home></Home>
+            },
+            {
+                path:'/home',
                 element:<Home></Home>
             },
             {
@@ -52,6 +57,10 @@ const router = createBrowserRouter([
                 path:'/checkout/:id',
                 element:<PrivateRoute><Checkout></Checkout></PrivateRoute>,
                 loader:({params}) => fetch(`https://kamals-care-server.vercel.app/checkout/${params.id}`)
+            },
+            {
+                path:'/profile',
+                element:<UserProfile></UserProfile>
             }
         ]
     }

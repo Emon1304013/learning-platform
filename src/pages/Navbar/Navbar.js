@@ -24,11 +24,10 @@ const Navbar = () => {
       });
   };
   const activeStyle = {
-    backgroundColor : "white",
+    backgroundColor: "white",
     color: "gray",
-    padding:"5px",
-    borderRadius: "5px"
-
+    padding: "5px",
+    borderRadius: "5px",
   };
 
   return (
@@ -113,7 +112,8 @@ const Navbar = () => {
             <ul className="items-center justify-center space-y-4 md:flex md:space-x-6 md:space-y-0">
               <li className="text-white hover:text-indigo-200">
                 <NavLink
-                  to="/"
+                  to="/home"
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
                 >
                   HOME
                 </NavLink>
@@ -202,13 +202,19 @@ const Navbar = () => {
           <div className="hidden lg:inline-block">
             <div className="flex gap-2 items-center">
               {user?.photoURL ? (
-                <Tooltip title={user?.displayName} placement="top" arrow>
-                  <img
-                    className="rounded-full"
-                    style={{ height: "30px", width: "30px" }}
-                    src={user?.photoURL}
-                    alt=""
-                  />
+                <Tooltip
+                  title={user?.displayName ? user.displayName : "Mr. X"}
+                  placement="top"
+                  arrow
+                >
+                  <Link to='profile'>
+                    <img
+                      className="rounded-full"
+                      style={{ height: "30px", width: "30px" }}
+                      src={user?.photoURL}
+                      alt=""
+                    />
+                  </Link>
                 </Tooltip>
               ) : (
                 <img
