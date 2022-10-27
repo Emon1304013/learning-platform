@@ -1,6 +1,6 @@
 
 :root {
-  --primary-blue: rgb(0, 0, 255);
+  /* --primary-blue: rgb(0, 0, 255);
   --secondary-blue: rgb(96, 96, 182);
 
   --text-primary-light: black;
@@ -16,23 +16,35 @@
   --bg-secondary-dark: rgb(34, 34, 34);
 
   --bg-navbar-light: rgb(104, 104, 255);
-  --bg-navbar-dark: rgb(29, 29, 58);
+  --bg-navbar-dark: rgb(29, 29, 58); */
+  --clr-bg-dark: #1f2937; /* gray-800 */
+  --clr-bg-light: #A855F7; /* zinc-50 */
+  --clr-bg-white: #ffffff;
+
+  --clr-text-dark: #1f2937; /* gray-200 */
+  --clr-text-light: #fafafa;
 }
 
-.light-theme {
-  --text-primary: var(--text-primary-light);
-  --text-secondary: var(--text-secondary-light);
-  --bg-primary: var(--bg-primary-light);
-  --bg-secondary: var(--bg-secondary-light);
-  --bg-navbar: var(--bg-navbar-light);
+.dark {
+  background-color: var(--clr-bg-dark);
+  color: var(--clr-text-light);
 }
 
-.dark-theme {
-  --text-primary: var(--text-primary-dark);
-  --text-secondary: var(--text-secondary-dark);
-  --bg-primary: var(--bg-primary-dark);
-  --bg-secondary: var(--bg-secondary-dark);
-  --bg-navbar: var(--bg-navbar-dark);
+.light {
+  background-color: var(--clr-bg-light);
+  color: var(--clr-text-dark);
+}
+
+.homeLight {
+  background-color: var(--clr-bg-white);
+}
+.btnDark{
+  background-color: var(--clr-bg-white);
+  color: var(--clr-text-dark);
+}
+.btnLight{
+  background-color: var(--clr-bg-light);
+  color: var(--clr-text-light);
 }
 
 .App {

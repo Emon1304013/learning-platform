@@ -41,7 +41,7 @@ const Checkout = () => {
         </div>
 
         <h3 className="text-center font-semibold">
-          Subscribe to our newsletter for future updates
+          Thanks for Purchasing
         </h3>
       </div>
     </div>

@@ -34,7 +34,7 @@ const Blog = () => {
           </h1>
         </div>
         <div className="mx-11 mb-4 text-md text-gray-500">
-          <p>
+          <div>
             Google Firebase is an application development platform that allows
             developers to create iOS, Android, and Web apps. It reduces
             development workload and time. And it's a perfect prototyping tool.
@@ -70,7 +70,7 @@ const Blog = () => {
                 <span className="font-bold text-black"> Backendless </span>is a visual application development platform. It has been operating since 2012, and it is one of the first Backend as a Service solutions launched. 
               </li>
             </ul>
-          </p>
+          </div>
         </div>
       </div>
 

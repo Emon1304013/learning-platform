@@ -6,7 +6,7 @@ import { FaEye } from "react-icons/fa";
 // import { onAuthStateChanged } from "firebase/auth";
 
 const Login = () => {
-  const { userLogin, googleSignIn, resetPass, setLoading, githubSignIn} =
+  const { userLogin, googleSignIn, resetPass, setLoading, githubSignIn, setUser} =
     useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,7 +32,7 @@ const Login = () => {
         // onAuthStateChanged(auth, (currentUser) => {
         //     setUser(currentUser)})
         const user = result.user;
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
         toast.success("User logged in successfully")
       })
       .catch((error) => {
@@ -56,13 +56,15 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        if (user.emailVerified) {
-          navigate(from, { replace: true });
-          toast.success("User Logged in successfully");
-        } else {
-          toast.error("Your email is not verified. Please verify First");
-          e.target.reset();
-        }
+        // if (user.emailVerified) {
+        //   navigate(from, { replace: true });
+        //   toast.success("User Logged in successfully");
+        // } else {
+        //   toast.error("Your email is not verified. Please verify First");
+        //   e.target.reset();
+        // }
+        e.target.reset();
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);

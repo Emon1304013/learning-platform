@@ -1,3 +1,4 @@
+import { onAuthStateChanged } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -6,7 +7,7 @@ import { AuthContext } from "../../contexts/UserContext";
 // import { onAuthStateChanged } from "firebase/auth";
 
 const SignUp = () => {
-  const { createUser, verifyEmail, updateUserProfile, googleSignIn , githubSignIn} =
+  const { createUser, verifyEmail, updateUserProfile, googleSignIn , githubSignIn,auth,setUser} =
     useContext(AuthContext);
 
   const [name, setName] = useState("");
@@ -115,7 +116,7 @@ const SignUp = () => {
 
   const handleGoogleSignin = () => {
     googleSignIn().then((result) => {
-      console.log(result.user);
+      // console.log(result.user);
       navigate(from, { replace: true })
     });
   };
@@ -123,11 +124,10 @@ const SignUp = () => {
   const handleGithubSignIn = () =>{
     githubSignIn()
     .then((result) => {
-      // onAuthStateChanged(auth, (currentUser) => {
-      //   setUser(currentUser)})
+      
       const user = result.user;
-      console.log(user);
       toast.success("User logged in successfully")
+      // navigate('/');
     })
     .catch((error) => {
       toast.error(error.message);

@@ -8,10 +8,8 @@ import LessonDetails from "../LessonDetails/LessonDetails";
 
 const CourseDetails = () => {
   const courseDetails = useLoaderData();
-  console.log(courseDetails);
-  const { id, name, description, img, projects, skills, lesson_details } =
+  const { id, name, description, projects, skills, lesson_details } =
     courseDetails;
-    console.log(lesson_details);
 
   const createPdf = async () => {
     const pdf = new jsPDF("portrait", "pt", "a4");

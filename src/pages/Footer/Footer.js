@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
+import { ThemeContext } from "../../contexts/ThemeProvider";
 
 const Footer = () => {
+  const {darkMode} = useContext(ThemeContext)
   return (
     <div>
-      <footer className="p-4 mt-8 shadow md:px-6 md:py-8 bg-purple-600 rounded-t-lg">
+      <footer className={`p-4 shadow md:px-6 md:py-8 ${darkMode ? 'dark' : 'light'}`}>
         <div className="sm:flex sm:items-center sm:justify-between sm:w-2/3 mx-auto">
           <Link to="/" className="flex items-center mb-4 sm:mb-0">
             <img
@@ -14,11 +16,11 @@ const Footer = () => {
               className="mr-3 rounded-full"
               alt=" Logo"
             />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+            <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
               KAMAL'S CARE
             </span>
           </Link>
-          <ul className="flex flex-wrap items-center mb-6 text-sm text-white-500 sm:mb-0 dark:text-white">
+          <ul className="flex flex-wrap items-center mb-6 text-sm text-white sm:mb-0">
             
               <Link to="/" className="mr-4 md:mr-6 ">
                 <button className="cursor-pointer">HOME</button>

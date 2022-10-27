@@ -3,14 +3,15 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/UserContext";
-import logo from '../../assets/images/logo.png'
+import logo from "../../assets/images/logo.png";
 import { Tooltip } from "@mui/material";
-import {ThemeProvider} from '../../contexts/ThemeContext'
+import { FaSun, FaMoon } from "react-icons/fa";
+import { ThemeContext } from "../../contexts/ThemeProvider";
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
   const { user, userSignOut } = useContext(AuthContext);
-  const { theme, toggleTheme } = useContext(ThemeProvider)
+  const {darkMode,toggleTheme} = useContext(ThemeContext);
 
   const handleLogOut = () => {
     // console.log("User logged Out");
@@ -22,18 +23,24 @@ const Navbar = () => {
         toast.error(error.message);
       });
   };
+
   return (
-    <nav className="w-full bg-purple-500 shadow">
-      <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+    <nav className={`w-full ${darkMode ? 'dark' : 'light'}`}>
+      <div className={`justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8`}>
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
-            <Link to="/" >
-                <div className="flex items-center gap-2">
-                <img src={logo} style = {{ height:'50px', width:'50px'}} className = 'rounded-full' alt="company logo" />
-                <h2 className="text-2xl font-bold text-white">KAMAL'S CARE</h2>
-                </div>
+            <Link to="/">
+              <div className="flex items-center gap-2">
+                <img
+                  src={logo}
+                  // style={{ height: "50px", width: "50px" }}
+                  className="rounded-full h-6 w-6 lg:h-12 lg:w-12"
+                  alt="company logo"
+                />
+                <h2 className="text-md lg:text-2xl font-bold text-white">KAMAL'S CARE</h2>
+              </div>
             </Link>
-            <div className="md:hidden">
+            <div className="md:hidden flex items-center">
               <button
                 className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
                 onClick={() => setNavbar(!navbar)}
@@ -68,6 +75,14 @@ const Navbar = () => {
                   </svg>
                 )}
               </button>
+
+              <button
+          onClick={() => toggleTheme()}
+          className="cursor-pointer border-2 p-1"
+        >
+          {darkMode ? <div className="flex items-center gap-2"><FaMoon></FaMoon> Dark</div> : <div className="flex items-center text-white gap-2"><FaSun className="text-white"></FaSun> Light</div>}
+        </button>
+
             </div>
           </div>
         </div>
@@ -96,31 +111,31 @@ const Navbar = () => {
               {/* For small screen  */}
               {user?.uid ? (
                 <div className="flex gap-2 items-center">
-                {user?.photoURL ? (
-                  <Tooltip title={user?.displayName} placement="top" arrow>
+                  {user?.photoURL ? (
+                    <Tooltip title={user?.displayName} placement="top" arrow>
+                      <img
+                        className="rounded-full"
+                        style={{ height: "30px", width: "30px" }}
+                        src={user?.photoURL}
+                        alt=""
+                      />
+                    </Tooltip>
+                  ) : (
                     <img
-                    className="rounded-full"
-                    style={{ height: "30px", width:"30px" }}
-                    src={user?.photoURL}
-                    alt=""
-                  />
-                  </Tooltip>
-                ) : (
-                  <img
-                    className="rounded-full"
-                    style={{ height: "30px", width:"30px" }}
-                    src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png"
-                    alt=""
-                  />
-                )}
-                {/* <p className="text-white text-xl">{user?.displayName}</p> */}
-                <Link
-                  className=" px-4 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
-                  onClick={handleLogOut}
-                >
-                  Sign Out
-                </Link>
-              </div>
+                      className="rounded-full"
+                      style={{ height: "30px", width: "30px" }}
+                      src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png"
+                      alt=""
+                    />
+                  )}
+                  {/* <p className="text-white text-xl">{user?.displayName}</p> */}
+                  <Link
+                    className=" px-4 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
+                    onClick={handleLogOut}
+                  >
+                    Sign Out
+                  </Link>
+                </div>
               ) : (
                 <>
                   <div className="space-x-2 md:hidden">
@@ -139,6 +154,7 @@ const Navbar = () => {
                   </div>
                 </>
               )}
+
               {/* Small Screen code ends here   */}
             </div>
           </div>
@@ -149,22 +165,18 @@ const Navbar = () => {
           <div className="hidden lg:inline-block">
             <div className="flex gap-2 items-center">
               {user?.photoURL ? (
-                <Tooltip 
-                title={user?.displayName}
-                placement="top"
-                arrow
-                >
-                <img
-                className="rounded-full"
-                style={{ height: "30px", width:"30px" }}
-                src={user?.photoURL}
-                alt=""
-              />
-              </Tooltip>
+                <Tooltip title={user?.displayName} placement="top" arrow>
+                  <img
+                    className="rounded-full"
+                    style={{ height: "30px", width: "30px" }}
+                    src={user?.photoURL}
+                    alt=""
+                  />
+                </Tooltip>
               ) : (
                 <img
                   className="rounded-full"
-                  style={{ height: "30px", width:"30px" }}
+                  style={{ height: "30px", width: "30px" }}
                   src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png"
                   alt=""
                 />
@@ -194,9 +206,16 @@ const Navbar = () => {
                 Sign up
               </Link>
             </div>
+
+            {/* <FaMoon></FaMoon> */}
           </>
         )}
-        <button onClick={() => toggleTheme()}>{theme}</button>
+        <button
+          onClick={() => toggleTheme()}
+          className="cursor-pointer hidden lg:block border-2 p-2"
+        >
+          {darkMode ? <div className="flex items-center gap-2"><FaMoon></FaMoon> Dark</div> : <div className="flex items-center text-white gap-2"><FaSun className="text-white"></FaSun> Light</div>}
+        </button>
       </div>
     </nav>
   );

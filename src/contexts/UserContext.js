@@ -23,13 +23,8 @@ const UserContext = ({children}) => {
         return sendEmailVerification(auth.currentUser)
       }
 
-    //   Name Update after User created 
-    // const updateName = (name) =>{
-    //     setLoading(true);
-    //     return updateProfile(auth.currentUser, {displayName: name})
-    // }
-
     const updateUserProfile = (name,photoURL) => {
+      setLoading(true);
       return updateProfile (auth.currentUser, {
         displayName : name, photoURL: photoURL
       })
@@ -67,10 +62,12 @@ const UserContext = ({children}) => {
 
       useEffect(() => {
         //this part will execute once the component is mounted.
-        const unsubscribe = onAuthStateChanged(auth, currentUser => {
-          if(currentUser === null || currentUser.emailVerified){//checking if emailVerified or user null. 
-            setUser(currentUser)
-          }
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+          console.log(currentUser);
+          setUser(currentUser)
+          // if((currentUser == null)){//checking if emailVerified or user null. 
+          //   setUser(currentUser)
+          // }
           setLoading(false)
         })
     
