@@ -9,7 +9,7 @@ const Checkout = () => {
   console.log(course);
   const { name, description, img, lessons, difficulty } = course;
   return (
-    <div className="mt-12">
+    <div className="my-12">
       <div className="w-11/12 lg:w-1/2 mx-auto ">
         <h2 className="text-xl lg:text-2xl text-center font-bold mb-4 font-serif">
           Welcome, <span className="uppercase">{user?.displayName}</span>
@@ -32,7 +32,7 @@ const Checkout = () => {
                 </div>
                 <p className="text-gray-700 text-base">{description}</p>
               </div>
-              <div class="flex items-center justify-between">
+              <div class="flex flex-col lg:flex-row items-center justify-between">
                 <p><span className="font-semibold">Lessons: </span> {lessons}</p>
                 <p><span className="font-semibold">Difficulty-level: </span>{difficulty}</p>
               </div>

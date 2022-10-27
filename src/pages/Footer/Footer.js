@@ -7,8 +7,9 @@ const Footer = () => {
   const {darkMode} = useContext(ThemeContext)
   return (
     <div>
-      <footer className={`p-4 shadow md:px-6 md:py-8 ${darkMode ? 'dark' : 'light'}`}>
-        <div className="sm:flex sm:items-center sm:justify-between sm:w-2/3 mx-auto">
+      <footer className={`p-4 shadow md:px-20 md:py-8 ${darkMode ? 'dark' : 'light'}`}>
+        <div className="sm:flex sm:items-center sm:justify-between mx-auto">
+          <div className="flex justify-center">
           <Link to="/" className="flex items-center mb-4 sm:mb-0">
             <img
               src={logo}
@@ -20,7 +21,9 @@ const Footer = () => {
               KAMAL'S CARE
             </span>
           </Link>
-          <ul className="flex flex-wrap items-center mb-6 text-sm text-white sm:mb-0">
+          </div>
+          <div>
+            <ul className="flex flex-wrap items-center justify-center mb-6 text-sm text-white sm:mb-0">
             
               <Link to="/" className="mr-4 md:mr-6 ">
                 <button className="cursor-pointer">HOME</button>
@@ -38,13 +41,16 @@ const Footer = () => {
               </Link>
 
           </ul>
+          </div>
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-white lg:my-8" />
+        <div className="text-center">
         <span className="block text-sm text-white sm:text-center dark:text-white">
           ©2022
           <span className="hover:underline"> KAMAL'S CARE</span>. All Rights
           Reserved.
         </span>
+        </div>
       </footer>
     </div>
   );

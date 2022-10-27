@@ -1,4 +1,3 @@
-import { onAuthStateChanged } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -7,7 +6,7 @@ import { AuthContext } from "../../contexts/UserContext";
 // import { onAuthStateChanged } from "firebase/auth";
 
 const SignUp = () => {
-  const { createUser, verifyEmail, updateUserProfile, googleSignIn , githubSignIn,auth,setUser} =
+  const { createUser, verifyEmail, updateUserProfile, googleSignIn , githubSignIn} =
     useContext(AuthContext);
 
   const [name, setName] = useState("");
@@ -82,7 +81,6 @@ const SignUp = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
         event.target.reset();
         updateUserProfile(name, photoUrl)
         .then(() => {
@@ -98,14 +96,12 @@ const SignUp = () => {
 
       .catch((error) => {
         const errorMessage = error.message;
-        console.error(error);
         toast.error(errorMessage);
       });
   };
 
   const handleShowPass = (e) => {
     e.preventDefault();
-    console.log("show password");
     setShowPass(!showPass);
   };
 
@@ -116,7 +112,6 @@ const SignUp = () => {
 
   const handleGoogleSignin = () => {
     googleSignIn().then((result) => {
-      // console.log(result.user);
       navigate(from, { replace: true })
     });
   };
@@ -124,10 +119,9 @@ const SignUp = () => {
   const handleGithubSignIn = () =>{
     githubSignIn()
     .then((result) => {
-      
       const user = result.user;
       toast.success("User logged in successfully")
-      // navigate('/');
+      navigate(from, { replace: true })
     })
     .catch((error) => {
       toast.error(error.message);
