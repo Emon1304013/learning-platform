@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/UserContext";
 import logo from "../../assets/images/logo.png";
@@ -11,7 +11,7 @@ import { ThemeContext } from "../../contexts/ThemeProvider";
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
   const { user, userSignOut } = useContext(AuthContext);
-  const {darkMode,toggleTheme} = useContext(ThemeContext);
+  const { darkMode, toggleTheme } = useContext(ThemeContext);
 
   const handleLogOut = () => {
     // console.log("User logged Out");
@@ -23,10 +23,19 @@ const Navbar = () => {
         toast.error(error.message);
       });
   };
+  const activeStyle = {
+    backgroundColor : "white",
+    color: "gray",
+    padding:"5px",
+    borderRadius: "5px"
+
+  };
 
   return (
-    <nav className={`w-full ${darkMode ? 'dark' : 'light'}`}>
-      <div className={`justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8`}>
+    <nav className={`w-full ${darkMode ? "dark" : "light"}`}>
+      <div
+        className={`justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8`}
+      >
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             <Link to="/">
@@ -37,7 +46,9 @@ const Navbar = () => {
                   className="rounded-full h-6 w-6 lg:h-12 lg:w-12"
                   alt="company logo"
                 />
-                <h2 className="text-md lg:text-2xl font-bold text-white">KAMAL'S CARE</h2>
+                <h2 className="text-md lg:text-2xl font-bold text-white">
+                  KAMAL'S CARE
+                </h2>
               </div>
             </Link>
             <div className="md:hidden flex items-center">
@@ -77,12 +88,19 @@ const Navbar = () => {
               </button>
 
               <button
-          onClick={() => toggleTheme()}
-          className="cursor-pointer border-2 p-1"
-        >
-          {darkMode ? <div className="flex items-center gap-2"><FaMoon></FaMoon> Dark</div> : <div className="flex items-center text-white gap-2"><FaSun className="text-white"></FaSun> Light</div>}
-        </button>
-
+                onClick={() => toggleTheme()}
+                className="cursor-pointer border-2 p-1"
+              >
+                {darkMode ? (
+                  <div className="flex items-center gap-2">
+                    <FaMoon></FaMoon> Dark
+                  </div>
+                ) : (
+                  <div className="flex items-center text-white gap-2">
+                    <FaSun className="text-white"></FaSun> Light
+                  </div>
+                )}
+              </button>
             </div>
           </div>
         </div>
@@ -94,16 +112,35 @@ const Navbar = () => {
           >
             <ul className="items-center justify-center space-y-4 md:flex md:space-x-6 md:space-y-0">
               <li className="text-white hover:text-indigo-200">
-                <Link to="/">HOME</Link>
+                <NavLink
+                  to="/"
+                >
+                  HOME
+                </NavLink>
               </li>
               <li className="text-white hover:text-indigo-200">
-                <Link to="/courses">COURSES</Link>
+                <NavLink
+                  to="/courses"
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                >
+                  COURSES
+                </NavLink>
               </li>
               <li className="text-white hover:text-indigo-200">
-                <Link to="/blog">BLOG</Link>
+                <NavLink
+                  to="/blog"
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                >
+                  BLOG
+                </NavLink>
               </li>
               <li className="text-white hover:text-indigo-200">
-                <Link to="/faq">FAQ</Link>
+                <NavLink
+                  to="/faq"
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                >
+                  FAQ
+                </NavLink>
               </li>
             </ul>
 
@@ -214,7 +251,15 @@ const Navbar = () => {
           onClick={() => toggleTheme()}
           className="cursor-pointer hidden lg:block border-2 p-2"
         >
-          {darkMode ? <div className="flex items-center gap-2"><FaMoon></FaMoon> Dark</div> : <div className="flex items-center text-white gap-2"><FaSun className="text-white"></FaSun> Light</div>}
+          {darkMode ? (
+            <div className="flex items-center gap-2">
+              <FaMoon></FaMoon> Dark
+            </div>
+          ) : (
+            <div className="flex items-center text-white gap-2">
+              <FaSun className="text-white"></FaSun> Light
+            </div>
+          )}
         </button>
       </div>
     </nav>
